@@ -7,9 +7,9 @@
 //  Created by 符士洪 on 2021/9/2.
 //
 
-#include <iostream>
-#include "TApplication.h"
-#include "TFile.h"
+#include <iostream> // C++ header
+#include <TApplication.h> // ROOT header
+#include <TFile.h>
 
 int main(int argc, char * argv[])
 {
@@ -55,7 +55,7 @@ int main(int argc, char * argv[])
     exSwitch.insert(std::map<Int_t, Bool_t>::value_type(14, 0)); // exercise 14
     
     //******** Loop section *********
-    for (std::map<Int_t, Bool_t>::iterator iter = exSwitch.begin(); iter != exSwitch.end(); iter++)
+    for (std::map<Int_t, Bool_t>::const_iterator iter = exSwitch.begin(); iter != exSwitch.end(); iter++)
     {
         if (iter->second)
         {

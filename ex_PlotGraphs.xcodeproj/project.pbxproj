@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		293B323B26E1157600C2EF12 /* PlotGraphs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 293B323A26E1157600C2EF12 /* PlotGraphs.cpp */; };
+		29CC986726E226D9001ABC5C /* solution_PlotGraphs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29CC986526E226D9001ABC5C /* solution_PlotGraphs.cpp */; };
+		29CC986A26E22F41001ABC5C /* solution_exercise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29CC986826E22F41001ABC5C /* solution_exercise.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +28,10 @@
 		293B323726E1157600C2EF12 /* ex_PlotGraphs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ex_PlotGraphs; sourceTree = BUILT_PRODUCTS_DIR; };
 		293B323A26E1157600C2EF12 /* PlotGraphs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlotGraphs.cpp; sourceTree = "<group>"; };
 		293B324126E1161200C2EF12 /* ex_PlotGraphs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ex_PlotGraphs.entitlements; sourceTree = "<group>"; };
+		29CC986526E226D9001ABC5C /* solution_PlotGraphs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = solution_PlotGraphs.cpp; sourceTree = "<group>"; };
+		29CC986626E226D9001ABC5C /* solution_PlotGraphs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = solution_PlotGraphs.h; sourceTree = "<group>"; };
+		29CC986826E22F41001ABC5C /* solution_exercise.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = solution_exercise.cpp; sourceTree = "<group>"; };
+		29CC986926E22F41001ABC5C /* solution_exercise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = solution_exercise.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,10 @@
 			children = (
 				293B324126E1161200C2EF12 /* ex_PlotGraphs.entitlements */,
 				293B323A26E1157600C2EF12 /* PlotGraphs.cpp */,
+				29CC986526E226D9001ABC5C /* solution_PlotGraphs.cpp */,
+				29CC986626E226D9001ABC5C /* solution_PlotGraphs.h */,
+				29CC986826E22F41001ABC5C /* solution_exercise.cpp */,
+				29CC986926E22F41001ABC5C /* solution_exercise.h */,
 			);
 			path = ex_PlotGraphs;
 			sourceTree = "<group>";
@@ -120,6 +130,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29CC986A26E22F41001ABC5C /* solution_exercise.cpp in Sources */,
+				29CC986726E226D9001ABC5C /* solution_PlotGraphs.cpp in Sources */,
 				293B323B26E1157600C2EF12 /* PlotGraphs.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@
 #include <iostream> // C++ header
 #include <TApplication.h> // ROOT header
 #include <TFile.h>
+#include "solution_exercise.h" // my header
 
 int main(int argc, char * argv[])
 {
@@ -59,7 +60,20 @@ int main(int argc, char * argv[])
     {
         if (iter->second)
         {
-            std::cout << "The status of exercise " << iter->first << " is: " << iter->second << " ." << std::endl;
+            switch (iter->first)
+            {
+                case 12:
+                {
+                    MySolution::Ex_12* myEx_12 = nullptr;
+                    myEx_12 = new MySolution::Ex_12(iter->first);
+                    break;
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+//            std::cout << "The status of exercise " << iter->first << " is: " << iter->second << " ." << std::endl;
         }
     }
     
@@ -74,8 +88,10 @@ int main(int argc, char * argv[])
     folder.clear();
     inputFile->Close();
     delete inputFile;
+    inputFile = nullptr;
     fileName = "";
     delete myApp;
+    myApp = nullptr;
     
     return 0;
 }

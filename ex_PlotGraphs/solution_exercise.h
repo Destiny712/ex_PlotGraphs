@@ -19,6 +19,7 @@ class Ex_12 : public MySolution
 public:
     Ex_12(Int_t ex_num);
     ~Ex_12();
+    Int_t Solve();
 };
 }
 

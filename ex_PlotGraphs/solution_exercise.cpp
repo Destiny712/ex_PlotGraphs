@@ -17,3 +17,12 @@ MySolution::Ex_12::~Ex_12()
 {
     // Destructor
 }
+
+Int_t MySolution::Ex_12::Solve()
+{
+    // From here, it is the real solution to Exercise 12.
+    
+    std::cout << "Exercise 12 has been solved~~~" << std::endl;
+    // The above is the solution to Exercise 12.
+    return 0;
+}

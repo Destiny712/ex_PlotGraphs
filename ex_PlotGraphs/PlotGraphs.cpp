@@ -73,6 +73,7 @@ int main(int argc, char * argv[])
                 }
                     
                 default:
+                    std::cout << "The solution program of exercise " << iter->first << " has not been established yet..." << std::endl;
                     break;
             }
 //            std::cout << "The status of exercise " << iter->first << " is: " << iter->second << " ." << std::endl;

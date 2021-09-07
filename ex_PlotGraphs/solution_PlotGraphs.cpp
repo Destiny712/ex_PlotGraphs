@@ -21,5 +21,7 @@ Int_t MySolution::MySolution::Solve()
 {
     // This is a default output method, only output the number of the exercise.
     std::cout << "The number of the exercise is: " << ex_num << " ." << std::endl;
+    std::cout << "If you see this output, it means that the real solution program has not been established yet..." << std::endl;
+    
     return 0;
 }

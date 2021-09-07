@@ -1,5 +1,6 @@
 // Making plots from the histograms in folders.root.
 // Doing all three exercises in a single program.
+// All the files from web site: http://www.nevis.columbia.edu/~seligman/root-class/files/
 //
 //  PlotGraphs.cpp
 //  ex_PlotGraphs
@@ -65,7 +66,7 @@ int main(int argc, char * argv[])
                 case 12:
                 {
                     MySolution::Ex_12* myEx_12 = nullptr;
-                    myEx_12 = new MySolution::Ex_12(iter->first);
+                    myEx_12 = new MySolution::Ex_12(iter->first, inputFile, folder[0]);
                     myEx_12->Solve();
                     delete myEx_12;
                     myEx_12 = nullptr;
@@ -81,9 +82,9 @@ int main(int argc, char * argv[])
     }
     
     //******** Wrap-up section *********
+//    std::cout << "Hello, World!\n";
     // Make my application run.
-//    myApp->Run();
-    std::cout << "Hello, World!\n";
+    myApp->Run();
     
     //******** Release section *********
     exSwitch.clear();

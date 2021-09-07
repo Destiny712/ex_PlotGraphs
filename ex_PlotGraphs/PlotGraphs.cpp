@@ -66,9 +66,11 @@ int main(int argc, char * argv[])
                 {
                     MySolution::Ex_12* myEx_12 = nullptr;
                     myEx_12 = new MySolution::Ex_12(iter->first);
+                    myEx_12->Solve();
+                    delete myEx_12;
+                    myEx_12 = nullptr;
                     break;
                 }
-                    break;
                     
                 default:
                     break;

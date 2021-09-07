@@ -19,6 +19,7 @@ MySolution::MySolution::~MySolution()
 
 Int_t MySolution::MySolution::Solve()
 {
-    
+    // This is a default output method, only output the number of the exercise.
+    std::cout << "The number of the exercise is: " << ex_num << " ." << std::endl;
     return 0;
 }

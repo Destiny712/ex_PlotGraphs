@@ -9,7 +9,7 @@
 #ifndef solution_PlotGraphs_h
 #define solution_PlotGraphs_h
 
-//#include <stdio.h> // C++ header
+#include <iostream> // C++ header
 #include <TApplication.h> // ROOT header
 
 namespace MySolution
@@ -19,7 +19,9 @@ class MySolution
 public:
     MySolution();
     ~MySolution();
-    Int_t Solve();
+    virtual Int_t Solve();
+protected:
+    Int_t ex_num = 0;
 };
 }
 

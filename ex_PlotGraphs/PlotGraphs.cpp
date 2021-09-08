@@ -2,6 +2,9 @@
 // Doing all three exercises in a single program.
 // All the files from web site: http://www.nevis.columbia.edu/~seligman/root-class/files/
 //
+// To compile this:
+//   g++ PlotGraphs.cpp solution_exercise.cpp solution_PlotGraphs.cpp -o PlotGraphs.exe `root-config --glibs --cflags`
+//
 //  PlotGraphs.cpp
 //  ex_PlotGraphs
 //

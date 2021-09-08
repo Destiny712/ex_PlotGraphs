@@ -10,12 +10,7 @@
 #define solution_exercise_h
 
 //#include <stdio.h> // C++ header
-#include <TFile.h> // ROOT header
-#include <TF1.h>
-#include <TH1.h>
-#include <TCanvas.h>
-#include <TGraphErrors.h>
-#include <TTree.h>
+#include <TTree.h> // ROOT header
 #include <TKey.h>
 #include "solution_PlotGraphs.h" // my header
 
@@ -24,34 +19,51 @@ namespace MySolution
 class Ex_12 : public MySolution
 {
 public:
-    Ex_12(Int_t ex_num, TFile* inputFile, TString folder);
+    Ex_12();
+    using MySolution::MySolution;
     ~Ex_12();
     Int_t Solve();
-protected:
-    TFile* inputFile = nullptr;
-    TString folder = "";
+private:
+    //******** Definition section *********
+    Int_t numberOfHistograms = 0;
 };
 
 class Ex_13 : public MySolution
 {
 public:
-    Ex_13(Int_t ex_num, TFile* inputFile, TString folder);
+    Ex_13();
+    using MySolution::MySolution;
     ~Ex_13();
     Int_t Solve();
-protected:
-    TFile* inputFile = nullptr;
-    TString folder = "";
+private:
+    //******** Definition section *********
+    // For the second example, the correspondence between the histograms
+    // and the x-values is in a TTree. I told the students to use
+    // histogramList->MakeSelector() to create the code to read the tree.
+    // But since I know what I'm doing (OK, you can stop laughing now)
+    // I'll just read the tree directly.
+    TTree* histogramList = nullptr;
+    Int_t numberOfEntries = 0;
+    
+    // Define the branches of the tree.
+    TBranch* histogramNumberBranch = nullptr;
+    TBranch* xBranch = nullptr;
+
+    // The variables we'll read from those branches.
+    Int_t histogramNumber = 0;
 };
 
 class Ex_14 : public MySolution
 {
 public:
-    Ex_14(Int_t ex_num, TFile* inputFile, TString folder);
+    Ex_14();
+    using MySolution::MySolution;
     ~Ex_14();
     Int_t Solve();
-protected:
-    TFile* inputFile = nullptr;
-    TString folder = "";
+private:
+    //******** Definition section *********
+    TKey* key = nullptr;
+    TString title = "";
 };
 }
 

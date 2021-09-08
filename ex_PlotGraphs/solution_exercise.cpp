@@ -355,22 +355,149 @@ Int_t MySolution::Ex_13::Solve()
     return 0;
 }
 
-//Int_t MySolution::Ex_14::Solve()
-//{
-//    // From here, it is the real solution to Exercise 14.
-//
-//    //******** Definition section *********
-//
-//    //******** Initialization section *********
-//
-//    //******** Loop section *********
-//
-//    //******** Wrap-up section *********
-//
-//    std::cout << "Exercise " << ex_num << " has been solved~~~" << std::endl;
-//    // The above is the solution to Exercise 14.
-//
-//    //******** Release section *********
-//
-//    return 0;
-//}
+MySolution::Ex_14::Ex_14(Int_t ex_num, TFile* inputFile, TString folder)
+{
+    this->ex_num = ex_num;
+    this->inputFile = inputFile;
+    this->folder = folder;
+    // Constructor
+}
+
+MySolution::Ex_14::~Ex_14()
+{
+    folder = "";
+    inputFile = nullptr;
+    // Destructor
+}
+
+Int_t MySolution::Ex_14::Solve()
+{
+    // From here, it is the real solution to Exercise 14.
+    //
+    // Plot 3
+
+    //******** Definition section *********
+    TDirectory* example3 = nullptr;
+    // Create the vectors that will hold the information to be displayed on the plot.
+    std::vector<Double_t> xValue;
+    std::vector<Double_t> yValue;
+    std::vector<Double_t> xError;
+    std::vector<Double_t> yError;
+    
+    TKey* key = nullptr;
+    TH1* histogram = nullptr;
+    TString name = "";
+    TString title = "";
+    Double_t x = 0.0;
+    TF1* myFunction = nullptr;
+    TCanvas* canvas3 = nullptr;
+    TGraphErrors* graph3 = nullptr;
+    
+    //******** Initialization section *********
+    // On to the next folder.
+    example3 = inputFile->GetDirectory(folder);
+    if (example3 == nullptr)
+    {
+        std::cout << "Fatal error: folder " << folder << " does not exist..." << std::endl;
+        return -1;
+    }
+    example3->cd();
+    
+    // For the third example, there's no particular guide to the
+    // histogram names. Let's start by getting a list of everything in
+    // the folder. I had to hunt a bit through the web pages and the
+    // tutorials, but this seems to be the way to go through all the
+    // objects in the folder:
+    TIter next(example3->GetListOfKeys());
+    
+    myFunction = new TF1("myFunction", "gaus");
+    
+    // Create a canvas on which to draw the graph.
+    canvas3 = new TCanvas("canvas3", "canvas3", 60, 60, 775, 646);
+    canvas3->Range(0.01, -3.85618, 4.12408, 10000.0);
+    canvas3->SetBorderSize(2);
+    canvas3->SetLeftMargin(0.119326);
+    
+    //******** Loop section *********
+    while ((key = (TKey*)next())) // for each object in the folder
+    {
+        histogram = (TH1*)key->ReadObj();
+        // Is this object a histogram?
+        if (histogram != nullptr) // if the object is a histogram
+        {
+            // It's a histogram.  We only want to look at those
+            // histogram whose names begin with the text
+            // "plotAfterCuts".
+            name = histogram->GetName();
+            if (name.BeginsWith("plotAfterCuts"))
+            {
+                // We're going to work with this histogram.  The value
+                // of x is contained in the histogram title.
+                title = histogram->GetTitle();
+                
+                // How do we convert the text into a number?
+                // Fortunately, there's already a TString method that
+                // does just that.
+                x = title.Atof();
+                
+                // Fit the histogram.
+                myFunction->SetParameters(histogram->GetMaximum(), histogram->GetMean(), histogram->GetRMS());
+                histogram->Fit("myFunction", "QN");
+                
+                // Add the results to the end of the list of numbers.
+                xValue.push_back(x);
+                xError.push_back(0);
+                yValue.push_back(myFunction->GetParameter(1));
+                yError.push_back(myFunction->GetParameter(2));
+            }
+        }
+    }
+    
+    //******** Wrap-up section *********
+    canvas3->cd();
+    
+    // Create the graph.
+    graph3 = new TGraphErrors((Int_t)xValue.size(), xValue.data(), yValue.data(), xError.data(), yError.data());
+
+    graph3->SetName("Example3Plot");
+    graph3->SetTitle("Results of fits to example3 after-cut histograms");
+    graph3->SetFillColor(1);
+    graph3->SetMarkerColor(4);
+    graph3->SetMarkerStyle(21);
+    graph3->SetMarkerSize(1.3);
+    
+    // Set the axis labels.
+    graph3->GetXaxis()->SetTitle("x; units unknown");
+    graph3->GetXaxis()->CenterTitle(kTRUE);
+    graph3->GetXaxis()->SetTitleOffset(1.2);
+
+    graph3->GetYaxis()->SetTitle("value from fit");
+    graph3->GetYaxis()->CenterTitle(kTRUE);
+    graph3->GetYaxis()->SetTitleOffset(1.2);
+
+    // Draw the graph on the canvas.
+    graph3->Draw("AP");
+    canvas3->Update();
+    
+    std::cout << "Exercise " << ex_num << " has been solved~~~" << std::endl;
+    // The above is the solution to Exercise 14.
+    
+    //******** Release section *********
+    delete myFunction;
+    myFunction = nullptr;
+    x = 0.0;
+    title = "";
+    name = "";
+    delete histogram;
+    histogram = nullptr;
+    delete key;
+    key = nullptr;
+    xValue.clear();
+    yValue.clear();
+    xError.clear();
+    yError.clear();
+    delete example3;
+    example3 = nullptr;
+    
+    return 0;
+}

@@ -54,7 +54,7 @@ int main(int argc, char * argv[])
     // Set statuses for different exercises.
     exSwitch.insert(std::map<Int_t, Bool_t>::value_type(12, 1)); // exercise 12
     exSwitch.insert(std::map<Int_t, Bool_t>::value_type(13, 1)); // exercise 13
-    exSwitch.insert(std::map<Int_t, Bool_t>::value_type(14, 0)); // exercise 14
+    exSwitch.insert(std::map<Int_t, Bool_t>::value_type(14, 1)); // exercise 14
     
     //******** Loop section *********
     for (std::map<Int_t, Bool_t>::const_iterator iter = exSwitch.begin(); iter != exSwitch.end(); iter++)
@@ -80,6 +80,16 @@ int main(int argc, char * argv[])
                     myEx_13->Solve();
                     delete myEx_13;
                     myEx_13 = nullptr;
+                    break;
+                }
+                    
+                case 14:
+                {
+                    MySolution::Ex_14* myEx_14 = nullptr;
+                    myEx_14 = new MySolution::Ex_14(iter->first, inputFile, folder[2]);
+                    myEx_14->Solve();
+                    delete myEx_14;
+                    myEx_14 = nullptr;
                     break;
                 }
                     

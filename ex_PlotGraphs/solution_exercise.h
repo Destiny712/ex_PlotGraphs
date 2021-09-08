@@ -16,6 +16,7 @@
 #include <TCanvas.h>
 #include <TGraphErrors.h>
 #include <TTree.h>
+#include <TKey.h>
 #include "solution_PlotGraphs.h" // my header
 
 namespace MySolution
@@ -36,6 +37,17 @@ class Ex_13 : public MySolution
 public:
     Ex_13(Int_t ex_num, TFile* inputFile, TString folder);
     ~Ex_13();
+    Int_t Solve();
+protected:
+    TFile* inputFile = nullptr;
+    TString folder = "";
+};
+
+class Ex_14 : public MySolution
+{
+public:
+    Ex_14(Int_t ex_num, TFile* inputFile, TString folder);
+    ~Ex_14();
     Int_t Solve();
 protected:
     TFile* inputFile = nullptr;
